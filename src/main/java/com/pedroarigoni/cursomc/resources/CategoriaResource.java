@@ -13,14 +13,14 @@ import com.pedroarigoni.cursomc.domain.Categoria;
 import com.pedroarigoni.cursomc.services.CategoriaService;
 
 @RestController
-@RequestMapping(value="/categorias")
+@RequestMapping(value="/categorias") // URL do navegador
 public class CategoriaResource {
 
 	@Autowired
 	private CategoriaService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) {
+	public ResponseEntity<?> find(@PathVariable Integer id) { // PathVariable do Spring informa que o id oriundo da URL deve para a variável id 
 		Optional<Categoria> obj = service.buscar(id);		
 		return ResponseEntity.ok().body(obj);
 	}
